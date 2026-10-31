@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mostafa & Amira | Wedding</title>
+<meta property="og:title" content="Karim & Laila | Wedding Invitation">
+<meta property="og:description" content="You are invited to celebrate with us">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Great+Vibes&family=Tajawal:wght@400;500;700&family=Aref+Ruqaa:wght@400;700&display=swap">
+<style>
+:root{--olive:#5f6b34;--olive-d:#3f4a22;--blush:#f3dfd8;--rose:#c98b8b;--cream:#fbf4ec;--ink:#3b3a2c;
+--script:"Great Vibes","Aref Ruqaa",cursive;--serif:"Cormorant Garamond","Tajawal",Georgia,serif;--ar:"Aref Ruqaa","Tajawal",serif}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:"Tajawal",var(--serif);line-height:1.8;text-align:center;overflow-x:hidden}
+body.locked{height:100vh;overflow:hidden}
+section{padding:72px 24px;max-width:560px;margin:auto}
+h2{font-family:var(--serif);font-weight:600;font-size:2rem;color:var(--olive);margin-bottom:12px}
+p{font-size:1.1rem}
+.en{font-family:var(--serif);font-size:1.2rem;font-style:italic}
+
+/* ---------- Envelope ---------- */
+#intro{position:fixed;inset:0;z-index:50;background:radial-gradient(circle at 50% 40%,#e8efd8,#cfdcb4);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;transition:opacity 1s .9s,visibility 0s 1.9s}
+#intro.open{opacity:0;visibility:hidden}
+#intro h1{font-family:var(--serif);letter-spacing:.18em;color:var(--olive-d);font-size:1.5rem;font-weight:600}
+.env{position:relative;width:min(78vw,320px);aspect-ratio:3/2;cursor:pointer;filter:drop-shadow(0 14px 22px rgba(60,70,30,.25))}
+.env .back{position:absolute;inset:0;background:#d9a9a6;border-radius:6px}
+.env .letter{position:absolute;left:8%;right:8%;top:8%;height:80%;background:var(--cream);border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:var(--script);font-size:2rem;color:var(--olive);transition:transform .9s .5s}
+.env .front{position:absolute;inset:0;background:linear-gradient(135deg,#e8b9b6 50%,transparent 50%) left/50% 100% no-repeat,linear-gradient(225deg,#e3b0ad 50%,transparent 50%) right/50% 100% no-repeat;border-radius:6px}
+.env .flap{position:absolute;left:0;right:0;top:0;height:58%;background:#efc4c0;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .7s}
+.seal{position:absolute;left:50%;top:50%;width:54px;height:54px;margin:-27px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#f4efe6,#cfc4b2);box-shadow:0 3px 8px rgba(0,0,0,.3);display:grid;place-items:center;font-family:var(--script);color:var(--olive-d);font-size:1.4rem;transition:opacity .3s}
+#intro.open .flap{transform:rotateX(180deg)}
+#intro.open .seal{opacity:0}
+#intro.open .letter{transform:translateY(-55%)}
+.tap{font-family:var(--serif);font-style:italic;color:var(--olive-d);font-size:1.15rem;animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.4}}
+
+/* ---------- Hero ---------- */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;position:relative;max-width:none;background:linear-gradient(var(--cream),var(--blush))}
+.hero .frame{position:absolute;inset:14px;border:1.5px solid var(--rose);border-radius:28px 6px 28px 6px;pointer-events:none}
+.hero svg{width:150px;margin-bottom:6px}
+.std{font-family:var(--serif);letter-spacing:.3em;color:var(--olive);font-size:1rem}
+.date{font-family:var(--serif);font-size:3.2rem;color:var(--olive-d);font-weight:600}
+.names{font-family:var(--script);font-size:3.6rem;color:var(--olive);line-height:1.2}
+.names-ar{font-family:var(--ar);font-size:2.2rem;color:var(--rose)}
+.scroll{margin-top:30px;font-size:.95rem;color:var(--olive);opacity:.7}
+
+/* ---------- Countdown ---------- */
+.count{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:24px;direction:ltr}
+.count div{border:1.5px solid var(--rose);border-radius:14px;padding:12px 2px;background:#fffaf5}
+.count b{display:block;font-family:var(--serif);font-size:2rem;color:var(--olive);line-height:1.1}
+.count span{font-size:.8rem;color:var(--ink)}
+
+/* ---------- Details ---------- */
+.card{background:var(--olive);color:#f6efe0;border-radius:28px;padding:44px 24px}
+.card h2{color:#f6efe0;font-size:1.3rem;letter-spacing:.2em}
+.card .big{font-family:var(--serif);font-size:2.2rem;margin:10px 0 4px}
+.card .small{opacity:.85}
+.cal{background:#fffaf5;border-radius:22px;padding:22px 14px;margin-top:-18px;margin-inline:14px;position:relative;box-shadow:0 12px 30px rgba(60,70,30,.18)}
+.cal h3{font-family:var(--serif);color:var(--olive);font-size:1.6rem}
+.grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:10px;direction:ltr;font-family:var(--serif);font-size:1.05rem}
+.grid i{font-style:normal;color:var(--rose);font-size:.85rem}
+.grid .on{background:var(--olive);color:#fff;border-radius:50%;line-height:2.1;font-weight:600}
+
+/* ---------- Map ---------- */
+iframe{width:100%;height:240px;border:0;border-radius:20px;margin:18px 0;box-shadow:0 8px 22px rgba(0,0,0,.12)}
+.btn{display:inline-block;background:var(--olive);color:#fff;text-decoration:none;padding:12px 28px;border-radius:40px;font-family:var(--serif);font-size:1.1rem}
+.btn:focus-visible,.music:focus-visible{outline:3px solid var(--rose);outline-offset:3px}
+footer{background:var(--olive);color:#f6efe0;padding:50px 20px 70px;border-radius:50% 50% 0 0/40px 40px 0 0;margin-top:40px}
+footer .names{color:#f6efe0;font-size:2.6rem}
+
+/* ---------- Music + reveal ---------- */
+.music{position:fixed;bottom:18px;inset-inline-start:18px;z-index:40;width:46px;height:46px;border-radius:50%;border:0;background:var(--olive);color:#fff;font-size:1.2rem;box-shadow:0 4px 12px rgba(0,0,0,.25);cursor:pointer;display:none}
+body:not(.locked) .music{display:block}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .8s,transform .8s}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.tap{animation:none}}
+</style>
+</head>
+<body class="locked">
+
+<!-- ========== Envelope screen ========== -->
+<div id="intro">
+  <h1>SAVE THE DATE</h1>
+  <div class="env" id="env" role="button" tabindex="0" aria-label="Open invitation">
+    <div class="back"></div>
+    <div class="letter" id="letterNames">K &amp; L</div>
+    <div class="front"></div>
+    <div class="flap"></div>
+    <div class="seal" id="seal">K&amp;L</div>
+  </div>
+  <div class="tap">Tap to open</div>
+</div>
+
+<!-- ========== Hero ========== -->
+<section class="hero">
+  <div class="frame"></div>
+  <svg viewBox="0 0 160 90" fill="none" stroke="#c98b8b" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+    <path d="M80 82C40 56 38 28 58 22c10-3 18 3 22 12 4-9 12-15 22-12 20 6 18 34-22 60z" fill="#f3dfd8"/>
+    <path d="M8 40c20-14 32 8 48-6M152 40c-20-14-32 8-48-6" stroke="#5f6b34" stroke-width="2"/>
+  </svg>
+  <div class="std">SAVE THE DATE</div>
+  <div class="date" id="heroDate">11.11.26</div>
+  <div class="names" id="namesEn">Mostafa &amp; Amira</div>
+  <div class="names-ar" id="namesAr">مصطفى و أميرة</div>
+  <div class="scroll">⌄ <span id="scrollTxt">Scroll Down</span></div>
+</section>
+
+<!-- ========== Message ========== -->
+<section class="reveal">
+  <h2 id="msgAr" style="font-family:var(--ar)">بكل فرحة وحب، ندعوكم لمشاركتنا أجمل أيام حياتنا</h2>
+  <p class="en" id="msgEn">With great joy and love, we invite you to share one of the most beautiful days of our lives with us.</p>
+</section>
+
+<!-- ========== Countdown ========== -->
+<section class="reveal">
+  <h2>Countdown</h2>
+  <p class="en">Counting down to the happy moment that brings us together</p>
+  <div class="count">
+    <div><b id="d">0</b><span>Days</span></div>
+    <div><b id="h">0</b><span>Hours</span></div>
+    <div><b id="m">0</b><span>Minutes</span></div>
+    <div><b id="s">0</b><span>Seconds</span></div>
+  </div>
+</section>
+
+<!-- ========== Details + calendar ========== -->
+<section class="reveal">
+  <div class="card">
+    <h2>THE WEDDING</h2>
+    <div class="small" id="dayLine">Wednesday · 7:00 PM</div>
+    <div class="big" id="dateBig">11 November 2026</div>
+    <div class="small" id="venueLine">Hilton Pyramids Golf, Cairo</div>
+  </div>
+  <div class="cal"><h3 id="calTitle"></h3><div class="grid" id="grid"></div></div>
+</section>
+
+<!-- ========== Map ========== -->
+<section class="reveal">
+  <h2>Location</h2>
+  <p id="venueAr" style="font-family:var(--ar)">هيلتون بيراميدز جولف</p>
+  <iframe id="map" loading="lazy" title="Map"></iframe>
+  <a class="btn" id="mapBtn" target="_blank" rel="noopener">Open in Google Maps</a>
+</section>
+
+<footer>
+  <p class="en" style="color:#f6efe0">Your presence would make our special day even more memorable.</p>
+  <div class="names" id="footNames">Mostafa &amp; Amira</div>
+</footer>
+
+<button class="music" id="music" aria-label="Toggle music">♪</button>
+<audio id="song" src="audio/song.mp3" loop preload="auto"></audio>
+
+<script>
+/* ============ عدّلي هنا بس ============ */
+const CONFIG = {
+  nameEn: "Mostafa & Amira",
+  nameAr: "مصطفى و أميرة",
+  initials: "M&A",
+  dateTime: "2026-12-19T19:00:00",     // التاريخ والوقت (سنة-شهر-يوم T ساعة:دقيقة)
+  venueEn: "Hilton Pyramids Golf, Cairo",
+  venueAr: "هيلتون بيراميدز جولف",
+  mapQuery: "Hilton Pyramids Golf Cairo"
+};
+/* ===================================== */
+const $ = id => document.getElementById(id);
+const when = new Date(CONFIG.dateTime);
+const dateLong = when.toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"});
+const dayName = when.toLocaleDateString("en-US",{weekday:"long"});
+const time = when.toLocaleTimeString("en-US",{hour:"numeric",minute:"2-digit"});
+const pad = n => String(n).padStart(2,"0");
+
+document.title = CONFIG.nameEn + " | Wedding";
+$("namesEn").textContent = $("footNames").textContent = CONFIG.nameEn;
+$("namesAr").textContent = CONFIG.nameAr;
+$("seal").textContent = $("letterNames").textContent = CONFIG.initials;
+$("heroDate").textContent = `${pad(when.getDate())}.${pad(when.getMonth()+1)}.${String(when.getFullYear()).slice(2)}`;
+$("dayLine").textContent = `${dayName} · ${time}`;
+$("dateBig").textContent = dateLong;
+$("venueLine").textContent = CONFIG.venueEn;
+$("venueAr").textContent = CONFIG.venueAr;
+const q = encodeURIComponent(CONFIG.mapQuery);
+$("map").src = `https://maps.google.com/maps?q=${q}&output=embed`;
+$("mapBtn").href = `https://www.google.com/maps/search/?api=1&query=${q}`;
+
+/* Calendar (Mon-first) */
+const y = when.getFullYear(), mo = when.getMonth();
+$("calTitle").textContent = when.toLocaleDateString("en-US",{month:"long",year:"numeric"});
+let html = ["Mo","Tu","We","Th","Fr","Sa","Su"].map(d=>`<i>${d}</i>`).join("");
+const first = (new Date(y,mo,1).getDay()+6)%7;
+html += "<span></span>".repeat(first);
+for(let d=1; d<=new Date(y,mo+1,0).getDate(); d++)
+  html += `<span class="${d===when.getDate()?"on":""}">${d}</span>`;
+$("grid").innerHTML = html;
+
+/* Countdown */
+function tick(){
+  let t = Math.max(0, when - new Date()) / 1000;
+  $("d").textContent = Math.floor(t/86400);
+  $("h").textContent = Math.floor(t%86400/3600);
+  $("m").textContent = Math.floor(t%3600/60);
+  $("s").textContent = Math.floor(t%60);
+}
+tick(); setInterval(tick,1000);
+
+/* Open envelope + music */
+const song = $("song");
+function openInvite(){
+  const intro = $("intro");
+  if(intro.classList.contains("open")) return;
+  intro.classList.add("open");
+  song.volume = .6;
+  song.play().catch(()=>{});            // لو مفيش ملف أغنية مش هيحصل مشكلة
+  setTimeout(()=>document.body.classList.remove("locked"), 1500);
+}
+$("env").addEventListener("click", openInvite);
+$("env").addEventListener("keydown", e=>{ if(e.key==="Enter"||e.key===" ") openInvite(); });
+$("music").addEventListener("click", ()=>{ song.paused ? song.play() : song.pause(); $("music").style.opacity = song.paused ? .5 : 1; });
+
+/* Scroll reveal */
+const io = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target);} }),{threshold:.2});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
