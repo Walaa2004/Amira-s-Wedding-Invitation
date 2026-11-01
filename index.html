@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Mostafa & Amira | Wedding</title>
-<meta property="og:title" content="Karim & Laila | Wedding Invitation">
+<meta property="og:title" content="Mostafa & Amira | Wedding Invitation">
 <meta property="og:description" content="You are invited to celebrate with us">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Great+Vibes&family=Tajawal:wght@400;500;700&family=Aref+Ruqaa:wght@400;700&display=swap">
 <style>
-:root{--olive:#5f6b34;--olive-d:#3f4a22;--blush:#f3dfd8;--rose:#c98b8b;--cream:#fbf4ec;--ink:#3b3a2c;
+:root{--olive:#5f6b34;--olive-d:#3f4a22;--blush:#f3dfd8;--rose:#c98b8b;--cream:#ffffff;--ink:#3b3a2c;
 --script:"Great Vibes","Aref Ruqaa",cursive;--serif:"Cormorant Garamond","Tajawal",Georgia,serif;--ar:"Aref Ruqaa","Tajawal",serif}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth}
@@ -20,21 +20,263 @@ h2{font-family:var(--serif);font-weight:600;font-size:2rem;color:var(--olive);ma
 p{font-size:1.1rem}
 .en{font-family:var(--serif);font-size:1.2rem;font-style:italic}
 
-/* ---------- Envelope ---------- */
-#intro{position:fixed;inset:0;z-index:50;background:radial-gradient(circle at 50% 40%,#e8efd8,#cfdcb4);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;transition:opacity 1s .9s,visibility 0s 1.9s}
-#intro.open{opacity:0;visibility:hidden}
-#intro h1{font-family:var(--serif);letter-spacing:.18em;color:var(--olive-d);font-size:1.5rem;font-weight:600}
-.env{position:relative;width:min(78vw,320px);aspect-ratio:3/2;cursor:pointer;filter:drop-shadow(0 14px 22px rgba(60,70,30,.25))}
-.env .back{position:absolute;inset:0;background:#d9a9a6;border-radius:6px}
-.env .letter{position:absolute;left:8%;right:8%;top:8%;height:80%;background:var(--cream);border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:var(--script);font-size:2rem;color:var(--olive);transition:transform .9s .5s}
-.env .front{position:absolute;inset:0;background:linear-gradient(135deg,#e8b9b6 50%,transparent 50%) left/50% 100% no-repeat,linear-gradient(225deg,#e3b0ad 50%,transparent 50%) right/50% 100% no-repeat;border-radius:6px}
-.env .flap{position:absolute;left:0;right:0;top:0;height:58%;background:#efc4c0;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .7s}
-.seal{position:absolute;left:50%;top:50%;width:54px;height:54px;margin:-27px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#f4efe6,#cfc4b2);box-shadow:0 3px 8px rgba(0,0,0,.3);display:grid;place-items:center;font-family:var(--script);color:var(--olive-d);font-size:1.4rem;transition:opacity .3s}
+/* ---------- Envelope & Modern Intro (Mesh Gradient + 3D Depth) ---------- */
+#intro{
+  position:fixed;
+  inset:0;
+  z-index:50;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:26px;
+  overflow:hidden;
+  background-color:#fffdf9;
+  background-image:
+    radial-gradient(at 10% 15%, rgba(255, 218, 226, 0.75) 0px, transparent 50%),
+    radial-gradient(at 90% 15%, rgba(254, 241, 218, 0.7) 0px, transparent 50%),
+    radial-gradient(at 80% 85%, rgba(255, 228, 235, 0.8) 0px, transparent 55%),
+    radial-gradient(at 15% 85%, rgba(255, 246, 228, 0.75) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(255, 255, 255, 0.6) 0px, transparent 60%);
+  background-size:130% 130%;
+  animation:meshMove 18s ease-in-out infinite alternate;
+  transition:opacity 0.9s 1.2s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s 2.1s;
+}
+#intro.open{opacity:0;visibility:hidden;pointer-events:none}
+
+@keyframes meshMove{
+  0%{background-position:0% 0%}
+  50%{background-position:100% 100%}
+  100%{background-position:50% 15%}
+}
+
+/* Glowing Ambient Mesh Orbs */
+.mesh-glow{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(80px);
+  pointer-events:none;
+  opacity:0.6;
+  z-index:1;
+}
+.mesh-glow-1{
+  width:min(70vw, 420px);
+  height:min(70vw, 420px);
+  background:radial-gradient(circle, rgba(255, 214, 224, 0.85) 0%, rgba(255, 235, 240, 0) 70%);
+  top:-8%;
+  left:-8%;
+  animation:floatOrb1 20s ease-in-out infinite alternate;
+}
+.mesh-glow-2{
+  width:min(65vw, 380px);
+  height:min(65vw, 380px);
+  background:radial-gradient(circle, rgba(254, 238, 210, 0.8) 0%, rgba(255, 248, 235, 0) 70%);
+  bottom:-8%;
+  right:-8%;
+  animation:floatOrb2 22s ease-in-out infinite alternate;
+}
+@keyframes floatOrb1{
+  0%{transform:translate(0, 0) scale(1)}
+  50%{transform:translate(35px, 45px) scale(1.1)}
+  100%{transform:translate(-20px, 25px) scale(0.95)}
+}
+@keyframes floatOrb2{
+  0%{transform:translate(0, 0) scale(1)}
+  50%{transform:translate(-40px, -30px) scale(1.08)}
+  100%{transform:translate(25px, -15px) scale(0.92)}
+}
+
+/* Minimalist Luxury Paper Border */
+.intro-card-border{
+  position:absolute;
+  inset:16px;
+  border:1px solid rgba(212, 175, 55, 0.38);
+  border-radius:18px;
+  pointer-events:none;
+  z-index:2;
+  box-shadow:inset 0 0 25px rgba(255, 255, 255, 0.65);
+}
+.intro-card-border::before{
+  content:"";
+  position:absolute;
+  inset:4px;
+  border:0.75px dashed rgba(212, 175, 55, 0.22);
+  border-radius:14px;
+}
+@media (min-width:600px){
+  .intro-card-border{inset:24px;border-radius:22px}
+  .intro-card-border::before{inset:5px;border-radius:17px}
+}
+
+/* Interactive Parallax Floating Hearts */
+.parallax-container{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:2;
+}
+.parallax-heart{
+  position:absolute;
+  color:rgba(205, 139, 139, 0.42);
+  font-size:16px;
+  user-select:none;
+  will-change:transform;
+  animation:floatHeartAmbient 6s infinite ease-in-out alternate;
+}
+.parallax-heart:nth-child(2){font-size:22px;animation-duration:7s;animation-delay:-1s;color:rgba(224, 165, 175, 0.48)}
+.parallax-heart:nth-child(3){font-size:14px;animation-duration:5.5s;animation-delay:-2s;color:rgba(212, 175, 55, 0.38)}
+.parallax-heart:nth-child(4){font-size:24px;animation-duration:8s;animation-delay:-3s;color:rgba(205, 139, 139, 0.45)}
+.parallax-heart:nth-child(5){font-size:13px;animation-duration:6.5s;animation-delay:-1.5s;color:rgba(220, 160, 170, 0.4)}
+.parallax-heart:nth-child(6){font-size:18px;animation-duration:7.5s;animation-delay:-2.5s;color:rgba(212, 175, 55, 0.42)}
+
+@keyframes floatHeartAmbient{
+  0%{transform:translateY(0px) rotate(0deg)}
+  50%{transform:translateY(-8px) rotate(5deg)}
+  100%{transform:translateY(4px) rotate(-5deg)}
+}
+
+/* Staggered Fade-in on load: Title -> Envelope -> Tap to open */
+#intro h1{
+  font-family:var(--serif);
+  letter-spacing:.22em;
+  color:var(--olive-d);
+  font-size:1.55rem;
+  font-weight:600;
+  opacity:0;
+  animation:staggerFade 0.85s 0.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  z-index:5;
+}
+
+.env-wrap{
+  position:relative;
+  z-index:5;
+  opacity:0;
+  animation:staggerFadeOpacity 0.9s 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* 3D Depth Envelope & Smooth Hover */
+.env{
+  position:relative;
+  width:min(78vw,320px);
+  aspect-ratio:3/2;
+  cursor:pointer;
+  filter:drop-shadow(0 20px 30px rgba(160, 110, 120, 0.24)) drop-shadow(0 6px 12px rgba(120, 70, 80, 0.12));
+  transition:filter 0.4s ease;
+  transform-origin:center;
+}
+.env .back{position:absolute;inset:0;background:#d9a9a6;border-radius:6px;box-shadow:inset 0 2px 6px rgba(0,0,0,0.08)}
+.env .letter{
+  position:absolute;
+  left:8%;
+  right:8%;
+  top:8%;
+  height:80%;
+  background:var(--cream);
+  border-radius:4px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 2px 8px rgba(0,0,0,0.08);
+  border:1px solid rgba(212, 175, 55, 0.35);
+  overflow:hidden;
+  padding:8px;
+  transform:none;
+  transition:transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card-peek-names{
+  font-family:var(--script);
+  font-size:1.65rem;
+  color:var(--olive);
+  line-height:1.15;
+}
+.card-peek-sub{
+  font-family:var(--serif);
+  font-size:0.75rem;
+  letter-spacing:0.18em;
+  color:var(--olive-d);
+  margin-top:3px;
+}
+.card-peek-date{
+  font-family:var(--serif);
+  font-size:0.85rem;
+  font-weight:600;
+  color:var(--rose);
+  margin-top:2px;
+}
+
+.env .front{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,#e8b9b6 50%,transparent 50%) left/50% 100% no-repeat,linear-gradient(225deg,#e3b0ad 50%,transparent 50%) right/50% 100% no-repeat;
+  border-radius:6px;
+  filter:drop-shadow(0 -1px 3px rgba(100,50,60,0.06));
+}
+.env .flap{
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  height:58%;
+  background:#efc4c0;
+  clip-path:polygon(0 0,100% 0,50% 100%);
+  transform-origin:top;
+  transition:transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  filter:drop-shadow(0 3px 5px rgba(120,60,70,0.12));
+}
+
+.seal{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:88px;
+  height:78px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:opacity 0.35s ease, transform 0.4s ease;
+  z-index:10;
+  filter:drop-shadow(0 5px 12px rgba(80,30,40,.22));
+}
+.seal img{width:100%;height:100%;object-fit:contain;display:block;pointer-events:none}
+.seal:hover{transform:translate(-50%,-50%) scale(1.08)}
+
+/* Smooth Opening Transitions */
 #intro.open .flap{transform:rotateX(180deg)}
-#intro.open .seal{opacity:0}
-#intro.open .letter{transform:translateY(-55%)}
-.tap{font-family:var(--serif);font-style:italic;color:var(--olive-d);font-size:1.15rem;animation:pulse 2s infinite}
-@keyframes pulse{50%{opacity:.4}}
+#intro.open .seal{opacity:0;transform:translate(-50%,-65%) scale(0.65)}
+#intro.open .letter{transform:translateY(-62%) scale(1.02)}
+
+/* Tap Hint with Staggered Entrance */
+.tap{
+  font-family:var(--serif);
+  font-style:italic;
+  color:var(--olive-d);
+  font-size:1.15rem;
+  letter-spacing:0.04em;
+  opacity:0;
+  animation:staggerFade 0.85s 0.95s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  z-index:5;
+}
+.tap span{
+  display:inline-block;
+  animation:pulse 2.2s infinite ease-in-out;
+}
+@keyframes pulse{
+  0%, 100%{opacity:1;transform:scale(1)}
+  50%{opacity:.5;transform:scale(0.98)}
+}
+
+@keyframes staggerFade{
+  0%{opacity:0;transform:translateY(18px) scale(0.97)}
+  100%{opacity:1;transform:translateY(0) scale(1)}
+}
+@keyframes staggerFadeOpacity{
+  0%{opacity:0}
+  100%{opacity:1}
+}
 
 /* ---------- Hero ---------- */
 .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;position:relative;max-width:none;background:linear-gradient(var(--cream),var(--blush))}
@@ -85,10 +327,12 @@ body:not(.locked) .music{display:block}
   <h1>SAVE THE DATE</h1>
   <div class="env" id="env" role="button" tabindex="0" aria-label="Open invitation">
     <div class="back"></div>
-    <div class="letter" id="letterNames">K &amp; L</div>
+    <div class="letter" id="letterNames"></div>
     <div class="front"></div>
     <div class="flap"></div>
-    <div class="seal" id="seal">K&amp;L</div>
+    <div class="seal" id="seal" title="Open invitation">
+      <img src="bow.png" alt="Ribbon Bow" />
+    </div>
   </div>
   <div class="tap">Tap to open</div>
 </div>
@@ -157,7 +401,7 @@ body:not(.locked) .music{display:block}
 const CONFIG = {
   nameEn: "Mostafa & Amira",
   nameAr: "مصطفى و أميرة",
-  initials: "M&A",
+  initials: "",
   dateTime: "2026-12-19T19:00:00",     // التاريخ والوقت (سنة-شهر-يوم T ساعة:دقيقة)
   venueEn: "Hilton Pyramids Golf, Cairo",
   venueAr: "هيلتون بيراميدز جولف",
@@ -174,7 +418,7 @@ const pad = n => String(n).padStart(2,"0");
 document.title = CONFIG.nameEn + " | Wedding";
 $("namesEn").textContent = $("footNames").textContent = CONFIG.nameEn;
 $("namesAr").textContent = CONFIG.nameAr;
-$("seal").textContent = $("letterNames").textContent = CONFIG.initials;
+$("letterNames").textContent = CONFIG.initials;
 $("heroDate").textContent = `${pad(when.getDate())}.${pad(when.getMonth()+1)}.${String(when.getFullYear()).slice(2)}`;
 $("dayLine").textContent = `${dayName} · ${time}`;
 $("dateBig").textContent = dateLong;
